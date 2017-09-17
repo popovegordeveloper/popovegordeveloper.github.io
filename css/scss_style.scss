@@ -1,0 +1,292 @@
+@import "mixines.scss";
+
+$height: 1100px;
+
+.resume-page {
+  max-width: 815px;
+  margin-top: 3vh;
+  margin-bottom: 20vh;
+  text-align: left;
+  height: $height;
+  box-shadow: -102px 124px 155px 40px rgba(0,0,0,0.22), -55px 55px 158px -30px rgba(0,0,0,0.75),  -42px 44px 37px -41px rgba(0,0,0,0.75);
+  display: inline-block;
+  @media screen and (min-width: 768px) and (max-width: 850px) {
+    width: 90%;
+    height: 1150px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 90%;
+    height: 850px;
+  }
+}
+
+.portfolio-page {
+  max-width: 815px;
+  margin-top: 3vh;
+  margin-bottom: 25vh;
+  display: inline-block;
+  display: none;
+  @media screen and (min-width: 320px) and (max-width: 850px) {
+    width: 90%;
+  }
+}
+
+.col1, .col2 {
+  width: 100%;
+  height: 300px;
+  cursor: pointer;
+  margin-bottom: 3px;
+  box-shadow: -102px 124px 155px 40px rgba(0,0,0,0.22), -55px 55px 158px -30px rgba(0,0,0,0.75),  -42px 44px 37px -41px rgba(0,0,0,0.75);
+  transition-property: filter;
+  transition-duration: .2s;
+  &:hover {
+    filter: brightness(40%);
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px){
+    height: 150px;
+  }
+}
+
+@each $numb in 1,2,3 {
+  .col1:nth-child(#{$numb}){
+    @if $numb == 1 {  background: url(../../frontend/web/img/chrono.jpg) no-repeat left top;  }
+    @if $numb == 2 {  background: url(../../frontend/web/img/most.jpg) no-repeat left top;  }
+    @if $numb == 3 {  background: url(../../frontend/web/img/amrita.png) no-repeat left top;  }
+    background-size: cover;
+  }
+}
+/**/
+@each $numb in 1,2,3 {
+  .col2:nth-child(#{$numb}){
+    @if $numb == 1 {  background: url(../../frontend/web/img/up.png) no-repeat left top;  }
+    @if $numb == 2 {  background: url(../../frontend/web/img/uremont.png) no-repeat left top;  }
+    @if $numb == 3 {  background: url(../../frontend/web/img/mostic.png) no-repeat left top;  }
+    background-size: cover;
+  }
+}
+
+.prew-panel {
+  padding: 3% 5%;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255,255,255,0.8);
+  position: absolute;
+  z-index: 100;
+  opacity: 0;
+}
+
+.close-preview {
+  font-size: 20px;
+  color: #1b1b1d * 1.5;
+  cursor: pointer;
+  float: right;
+  transition-property: color;
+  transition-duration: .2s;
+  &:hover {
+    color: #8ce196;
+  }
+}
+
+.pic-preview {
+  width: 100%;
+  height: 70%;
+  margin-right: 30px;
+  margin-bottom: 15px;
+  box-shadow: -102px 124px 155px 40px rgba(0,0,0,0.22), -55px 55px 158px -30px rgba(0,0,0,0.75),  -42px 44px 37px -41px rgba(0,0,0,0.75);
+}
+
+.name-info {
+  font-family: HelveticaRegular, sans-serif;
+  text-transform: uppercase;
+  color: #1b1b1d * 1.5;
+  font-size: 55px;
+  text-align: center;
+  @media screen and (min-width: 320px) and (max-width: 767px){
+    font-size: 25px;
+  }
+}
+
+.text-info {
+  font-family: HelveticaLight, sans-serif;
+  font-size: 20px;
+  color: #1b1b1d * 1.5;
+  margin-bottom: 10px;
+  text-align: center;
+  @media screen and (min-width: 320px) and (max-width: 767px){
+    font-size: 13px;
+  }
+}
+
+.redirect {
+  font-family: HelveticaLight, sans-serif;
+  font-size: 20px;
+  color: #1b1b1d * 1.5;
+  &:hover {
+    color: #1b1b1d * 1.5;
+    text-decoration: none;
+    color: #8ce196;
+  }
+}
+
+@each $column in left, right{
+  .#{$column}-column {
+    @if $column == left{ @media screen and (min-width: 768px) and (max-width: 850px) { height: 1150px; } @media screen and (min-width: 320px) and (max-width: 767px) {  width: 100%;  height: 850px;  } @include column(30%,#1b1b1d * 1.5,#{$height},left);  }
+    @if $column == right{ @media screen and (min-width: 768px) and (max-width: 850px) { height: 1150px; } @media screen and (min-width: 320px) and (max-width: 767px) {  display: none;  } @media screen and (min-width: 768px) {  display: block;  }  @include column(70%,#e8e6e9,#{$height},right,(50px 30px));  }
+  }
+}
+
+p {
+  cursor: default;
+}
+
+.avatar {
+  width: 100%;
+  height: 170px;
+  padding: 15% 5%;
+  text-align: center;
+  & svg {
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      display: none;
+    }
+  }
+  & img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-top: -157px;
+    opacity: 0;
+    @media screen and (min-width: 320px) and (max-width: 768px){
+      margin-top: 0px;
+    }
+  }
+}
+
+.g-lines {
+  & line{
+    stroke: #e8e6e9  / 1.5;
+  }
+}
+
+.g-lines-black {
+  & line{
+    stroke: #b1b1b3 / 1.5;
+  }
+}
+
+.info {
+  width: 100%;
+  @include space(30px,35px);
+}
+
+.main-info {
+  @include space(20px,30px,0px,50px,0px,0px,0px,0px,0px,50px);
+}
+
+.category {
+  @include space(0px,15px,0px,0px,0px,0px,0px,0px,0px,20px);
+}
+
+@each $title in title-category, title-work, title-name, vacancy-title, info-title, title, info-text, title-status, text-status, text-work {
+  .#{$title} {
+    @if $title == title-category {  @include title((HelveticaBold, sans-serif),15px,#1b1b1d * 1.5,1px,uppercase,25px);  }
+    @if $title == title-work {  @include title((HelveticaBold, sans-serif),15px,#1b1b1d * 1.5);  }
+    @if $title == title-name {  @include title((HelveticaBlack, sans-serif),55px,#1b1b1d * 1.5,2px,uppercase);  }
+    @if $title == vacancy-title {  @include title((HelveticaRegular, sans-serif),15px,#1b1b1d * 1.5,2px,uppercase,10px,-15px);  }
+    @if $title == info-title {  @include title((HelveticaRegular, sans-serif),15px,#e8e6e9,1px);  }
+    @if $title == title { @include title((HelveticaBold, sans-serif),15px,#e8e6e9,2px,uppercase,-2px);  }
+    @if $title == info-text {  @include title((HelveticaUltraLight, sans-serif),13px,#e8e6e9,1px,none,0px,-10px);  }
+    @if $title == text-status {  @include title((HelveticaLight, sans-serif),13px);  }
+    @if $title == text-work {  @include title((HelveticaLight, sans-serif),13px,#1b1b1d * 1.5,normal,none,0px,-5px);  }
+    @if $title == title-status { width: 44%; text-align: left; float: right; @include title((HelveticaBold, sans-serif),15px,#29292c,normal,none,0px,-27px); }
+  }
+}
+
+.type-title1, .type-title2 {  display:none;  }
+.type-title1 .new, .type-title2 .new{opacity: 0;}
+.type-title1 .div_opacity, .type-title2 .div_opacity{
+  -webkit-transition: opacity .1s ease-in-out;
+  -moz-transition: opacity .1s ease-in-out;
+  -ms-transition: opacity .1s ease-in-out;
+  -o-transition: opacity .1s ease-in-out;
+  transition: opacity .1s ease-in-out;
+  opacity: 1;}
+
+.skills {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.work {  width: 100%;  }
+
+@each $work in left,right,center{
+  .work-#{$work}{
+    @if $work == left{  @include work(47%,right,inline-block,top);  }
+    @if $work == right{  @include work(42%,left,inline-block,0);  }
+    @if $work == center{  margin-top: 3px; @include work(9%,0,inline-block,top);  }
+  }
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 7.5px;
+  background-color: #1b1b1d * 1.5;
+  margin: 0 auto;
+}
+
+::-webkit-progress-bar {
+  background: #bdbdbf;
+  border-radius: 20px;
+}
+
+::-webkit-progress-value {
+  background: #1b1b1d * 1.5;
+  border-radius: 20px;
+}
+
+::-moz-progress-bar {
+  background: #1b1b1d * 1.5;
+  border-radius: 20px;
+}
+
+progress {
+  display: block;
+  color: #1b1b1d * 1.5;
+  background: #bdbdbf;
+  border-radius: 20px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 75%;
+  height: 10px;
+  line-height: 21px;
+  margin-bottom: 15px;
+}
+
+::-webkit-scrollbar-button {
+  background: url('') no-repeat;
+  width: 5px;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0;
+  border-radius: 5px;
+  background-color: #e8e6e9;
+}
+
+::-webkit-resizer {
+  background: url('') no-repeat;
+  width: 4px;
+  height: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
